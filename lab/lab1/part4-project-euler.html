@@ -28,15 +28,65 @@
 
     /* =====================
 
-    Start code
+    Start code of Question 1
 
     ===================== */
+
+    multiples = [];
+
+    var Modulo = (num)=>{
+      if(num%15==0){
+        multiples.push(num)
+      } else if (num%5==0) {
+        multiples.push(num);
+      }else if (num%3==0) {
+        multiples.push(num);
+      }
+    }
+
+    for(i=1; i<1000; i++){
+      Modulo(i);
+    }
+
+    console.log(multiples);
+
+    var Sum =(a,b) =>{return(a+b)}
+
+    console.log("The Summation is: "+ multiples.reduce(Sum,0))
+
+    /* =====================
+
+    End code of Question 1
+
+    ===================== */
+
+    /* =====================
+
+    Start code of Question 2
+
+    ===================== */
+
+    var fibo = [1,1];
+    var sumFibo = 0;
+
+    for(let i =0; i<40; i++){
+      fibo[i+2]=fibo[i]+fibo[i+1];
+      if(fibo[i+2]>4000000){
+        break;
+      } else {
+        if(fibo[i+2]%2==0){
+          sumFibo+=fibo[i+2];
+        }
+      }
+    }
+    console.log(fibo)
+    console.log(sumFibo);
 
 
 
     /* =====================
 
-    End code
+    End code of Question 2
 
     ===================== */
 

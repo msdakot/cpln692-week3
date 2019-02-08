@@ -26,7 +26,25 @@
     Start code
 
     ===================== */
+    var FizzBuZZ = (num) =>{
+      var str1 = "Fizz";
+      var str2 = "Buzz";
+      if(num%15==0){
+        console.log(str1 +str2);
+      }
+      else if (num%3 ==0) {
+        console.log(str1);
+      }
+      else if (num%5==0 ){
+        console.log(str2);
+      } else {
+        console.log(num)
+      }
+    };
 
+    for( let i=0; i<100; i++){
+       FizzBuZZ(i);
+    };
 
 
     /* =====================

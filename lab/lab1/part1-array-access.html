@@ -74,10 +74,27 @@
     Start code
 
     ===================== */
+    var restaurantData = [[51.519, -0.1252,'Prezzo, London, England']]
 
-    L.marker([0, 0]).addTo(map);
-    L.marker([0, 0]).addTo(map);
-    L.marker([0, 0]).addTo(map);
+    var addRest = (lat,long,Name) =>{
+      restaurantData.push([lat,long,Name]);
+      return restaurantData;
+    }
+    addRest(34.06,-118.2910,'KabaWoo House, LA');
+    addRest(39.952138,-75.202253,'Zesto, PA')
+
+    var addMarkers = (obj) => {
+      return L.marker([obj[1],obj[0]])
+              .bindPopup(obj[2]);
+    };
+
+    data.map(addMarkers)
+
+
+
+    L.marker(restaurantData.LAT,restaurantData.LON).
+    addmap()
+    .bindPopUp(restaurantData.NAME)
 
     /* =====================
 

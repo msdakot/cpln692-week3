@@ -13,8 +13,8 @@
 
     <!--javascript imports-->
     <script src="leaflet.js"></script>
-    <script src="part4-data-clean.js"></script>
-    <script src="part4-data-dirty.js"></script>
+    <script src="part3-data-clean.js"></script>
+    <script src="part3-data-dirty.js"></script>
 
     <script>
 
@@ -63,22 +63,6 @@
 
     ===================== */
 
-    var data = bikeArrayClean;
-
-    /* =====================
-
-    Start code to filter data
-
-    ===================== */
-
-
-
-    /* =====================
-
-    End code to filter data
-
-    ===================== */
-
     var map = L.map('map', {
       center: [39.9522, -75.1639],
       zoom: 14
@@ -94,17 +78,93 @@
 
     /* =====================
 
+    Start code to filter data
+
+    ===================== */
+    var data = bikeArrayDirty;
+
+    var Twenty = [];
+
+    for(let i=0; i<data.length; i++){
+      if(data[i][3]>20){
+        Twenty.push(data[i]);
+      }
+    }
+
+      console.log(Twenty);
+
+      /* =====================
+
+      End code to filter data
+
+      ===================== */
+
+
+    /* =====================
+
     Start code to add markers to map
 
     ===================== */
+    var AddMarkers = (obj) => {
+      return L.marker([obj[1],obj[0]])
+              .bindPopup(obj[2]);
+    };
 
+    for (let i=0; i<Twenty.length;i++){
+      AddMarkers(Twenty[i]).addTo(map);
+    }
+    //data.map(addMarkers)
 
+    // for(let i=0; i<data.length; i++){
+    //   L.marker([data[i][1],data[i][0]])
+    //   .addTo(map)
+    //   .bindPopup(data[i][2]);
+    // }
 
     /* =====================
 
     End code to add markers to map
 
     ===================== */
+
+    /* =====================
+
+    Start code to clean the dirty bike data and add markers
+
+    ===================== */
+
+    var Dirty = bikeArrayDirty
+
+    var CleanBikeData = []
+
+    var parsing = (obj) => {
+      var num = parseInt(obj[3],10);
+      return num;
+    }
+
+    for(var i=0; i<dirty.length; i++){
+      var n= parsing(dirty[i])
+      if(n>20){
+        CleanBikeData.push(dirty[i]);
+      }
+    }
+
+    console.log(CleanBikeData);
+
+    var AddDirty = (obj) => {
+      return L.marker([obj[1],obj[0]])
+              .bindPopup(obj[2]);
+    };
+
+    for (let i=0; i<CleanBikeData.length;i++){
+      AddMarkers(CleanBikeData[i]).addTo(map);
+    }
+    /* =====================
+
+    End code to clean the dirty bike data and add markers
+
+    ===================== */
+
 
     </script>
   </body>
